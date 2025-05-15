@@ -1,0 +1,31 @@
+{
+  "name": "plataforma-de-turismo",
+  "version": "1.0.0",
+  "description": "Plataforma de Turismo em desenvolvimento",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "node --watch src/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amaralneto10/Plataforma-de-Turismo.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/amaralneto10/Plataforma-de-Turismo/issues"
+  },
+  "homepage": "https://github.com/amaralneto10/Plataforma-de-Turismo#readme",
+  "dependencies": {
+    "@prisma/client": "^6.7.0",
+    "bcrypt": "^6.0.0",
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "prisma": "^6.7.0",
+    "sqlite3": "^5.1.7",
+    "zod": "^3.24.4"
+  }
+}
