@@ -10,7 +10,7 @@ export const hashPassword = async (password) => {
 
 export const gerarToken = (user) => {
     return jwt.sign(
-        {id: user.id, email: user.email},
+        {id: user.id, email: user.email, type: user.type || 'user'},
         JWT_SECRET,
         {expiresIn: "1h"}
     )
