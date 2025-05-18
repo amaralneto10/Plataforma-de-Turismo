@@ -43,7 +43,8 @@ export const registerAdmin = async (req, res) => {
                 name,
                 email,
                 phone,
-                password: senhaCriptografada
+                password: senhaCriptografada,
+                type: 'admin'
             }
         })
 
@@ -64,9 +65,17 @@ export const login = async (req, res) => {
     const { email, password } = req.body
 
     try {
-        const user = await prisma.user.findUnique({
+        let user = await prisma.user.findUnique({
             where: { email }
         })
+        let userType = 'user'
+
+        if (!user) {
+            user = await prisma.admin.findUnique({
+                where: { email }
+            })
+            userType = 'admin'
+        }
 
         if (!user) {
             res.status(401).json({mensagem: "Credenciais inválidas!"})
@@ -80,7 +89,7 @@ export const login = async (req, res) => {
             return
         }
 
-        const token = gerarToken(user)
+        const token = gerarToken({user, type: userType})
 
         res.json({usuario: {name: user.name, email: user.email},
         token})

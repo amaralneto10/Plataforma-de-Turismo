@@ -28,6 +28,7 @@ model Admin {
   email     String @unique
   phone     String
   password  String
+  type      String @default("admin")
 }
 
 model Place {
