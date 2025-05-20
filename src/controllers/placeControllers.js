@@ -4,10 +4,6 @@ const prisma = new PrismaClient()
 export const newPlace = async (req, res) => {
     const { name, description, address, type, rating } = req.body
 
-    if (!req.ehAdmin) {
-        return res.status(403).json({ mensagem: "Apenas admin pode criar locais" })
-    }
-
     try {
         const newPlace = await prisma.place.create({
             data: {
@@ -52,9 +48,6 @@ export const updatePlace = async (req, res) => {
     const { id } = req.params
     const { name, description, address, type, rating } = req.body
 
-    if (!req.ehAdmin) {
-        res.status(403).json({mensagem: `Apenas admin pode atualizar locais`})
-    }
 
     try {
         const updatePlace = await prisma.place.update({
@@ -76,10 +69,6 @@ export const updatePlace = async (req, res) => {
 
 export const deletePlace = async (req, res) => {
     const { id } = req.params
-
-    if (!req.ehAdmin) {
-        res.status(403).json({mensagem: `Apenas admin pode deletar locais: ${error.message}`})
-    }
 
     try {
         const deletePlace = await prisma.place.delete({

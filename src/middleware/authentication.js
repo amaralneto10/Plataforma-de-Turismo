@@ -18,7 +18,6 @@ export const authenticate = (req, res, next) => {
         // res.json({decoded})
         // return
         req.user = decoded
-        req.ehAdmin = decoded.type === 'admin'
         next()
     } catch (error) {
         res.status(403).json({mensagem: `Token inválido ou expirado! ${error.message}`})
