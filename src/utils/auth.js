@@ -8,9 +8,9 @@ export const hashPassword = async (password) => {
     return await bcrypt.hash(password, saltRounds)
 }
 
-export const gerarToken = (user) => {
+export const gerarToken = (user, type) => {
     return jwt.sign(
-        {id: user.id, email: user.email, type: user.type || 'user'},
+        {id: user.id, email: user.email, type: type},
         JWT_SECRET,
         {expiresIn: "1h"}
     )
